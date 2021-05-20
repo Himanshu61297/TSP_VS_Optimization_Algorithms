@@ -222,32 +222,44 @@ namespace optimization_algos
         {
             SharedMethods.TotalCities = (int)e.NewValue;
 
+            noCityText.Text = SharedMethods.TotalCities.ToString();
+
             startingTempSlider.Maximum = (endX + endY) * SharedMethods.TotalCities;
         }
 
         private void startingTempSlider_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
         {
             SharedMethods.Temperature = e.NewValue;
+
+            sTempText.Text = SharedMethods.Temperature.ToString();
         }
 
         private void tempRateSlider_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
         {
             SharedMethods.TemperatureRate = e.NewValue;
+
+            tempRateText.Text = SharedMethods.TemperatureRate.ToString();
         }
 
         private void populationSlider_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
         {
             SharedMethods.PopulationSize = (int)e.NewValue;
+
+            populationText.Text = SharedMethods.PopulationSize.ToString();
         }
 
         private void mutationSlider_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
         {
             SharedMethods.MutationRate = (float)e.NewValue;
+
+            mutationText.Text = SharedMethods.MutationRate.ToString();
         }
 
         private void elitismSlider_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
         {
             SharedMethods.Elitism = (int)e.NewValue;
+
+            elitismText.Text = SharedMethods.Elitism.ToString();
         }
 
     }

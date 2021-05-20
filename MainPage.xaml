@@ -47,27 +47,45 @@
                 <StackPanel>
                     <TextBlock Text="Properties" TextWrapping="Wrap" Style="{StaticResource BodyTextBlockStyle}" Foreground="#E5FFFFFF"/>
                     <StackPanel x:Name="noOfCitiesPanel" Orientation="Vertical" Margin="0,30,0,0">
-                        <TextBlock Text="No of Cities" TextWrapping="Wrap" Style="{StaticResource BodyTextBlockStyle}" FontSize="14" Opacity="0.55"/>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="No of Cities" TextWrapping="Wrap" Style="{StaticResource BodyTextBlockStyle}" FontSize="14" Opacity="0.55"/>
+                            <TextBlock x:Name="noCityText" Text="" TextWrapping="Wrap" Style="{StaticResource BodyTextBlockStyle}" FontSize="14" Opacity="0.55" Margin="5,0,0,0"/>
+                        </StackPanel>
                         <Slider x:Name="CitySlider" ValueChanged="CitySlider_ValueChanged" Margin="0,5,0,0"/>
                     </StackPanel>
                     <StackPanel x:Name="populationSizePanel" Orientation="Vertical" Margin="0,30,0,0">
-                        <TextBlock Text="Population Size" TextWrapping="Wrap" Style="{StaticResource BodyTextBlockStyle}" FontSize="14" Opacity="0.55"/>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Population Size" TextWrapping="Wrap" Style="{StaticResource BodyTextBlockStyle}" FontSize="14" Opacity="0.55"/>
+                            <TextBlock x:Name="populationText" Text="" TextWrapping="Wrap" Style="{StaticResource BodyTextBlockStyle}" FontSize="14" Opacity="0.55" Margin="5,0,0,0"/>
+                        </StackPanel>
                         <Slider x:Name="populationSlider" ValueChanged="populationSlider_ValueChanged" Margin="0,5,0,0"/>
                     </StackPanel>
                     <StackPanel x:Name="mutationRatePanel" Orientation="Vertical" Margin="0,30,0,0">
-                        <TextBlock Text="Mutation Rate" TextWrapping="Wrap" Style="{StaticResource BodyTextBlockStyle}" FontSize="14" Opacity="0.55"/>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Mutation Rate" TextWrapping="Wrap" Style="{StaticResource BodyTextBlockStyle}" FontSize="14" Opacity="0.55"/>
+                            <TextBlock x:Name="mutationText" Text="" TextWrapping="Wrap" Style="{StaticResource BodyTextBlockStyle}" FontSize="14" Opacity="0.55" Margin="5,0,0,0"/>
+                        </StackPanel>
                         <Slider x:Name="mutationSlider" ValueChanged="mutationSlider_ValueChanged" Margin="0,5,0,0"/>
                     </StackPanel>
                     <StackPanel x:Name="elitismPanel" Orientation="Vertical" Margin="0,30,0,0">
-                        <TextBlock Text="Elitism" TextWrapping="Wrap" Style="{StaticResource BodyTextBlockStyle}" FontSize="14" Opacity="0.55"/>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Elitism" TextWrapping="Wrap" Style="{StaticResource BodyTextBlockStyle}" FontSize="14" Opacity="0.55"/>
+                            <TextBlock x:Name="elitismText" Text="" TextWrapping="Wrap" Style="{StaticResource BodyTextBlockStyle}" FontSize="14" Opacity="0.55" Margin="5,0,0,0"/>
+                        </StackPanel>
                         <Slider x:Name="elitismSlider" ValueChanged="elitismSlider_ValueChanged" Margin="0,5,0,0"/>
                     </StackPanel>
                     <StackPanel x:Name="tempPanel" Orientation="Vertical" Margin="0,30,0,0">
-                        <TextBlock Text="Starting Temperature" TextWrapping="Wrap" Style="{StaticResource BodyTextBlockStyle}" FontSize="14" Opacity="0.55"/>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Starting Temperature" TextWrapping="Wrap" Style="{StaticResource BodyTextBlockStyle}" FontSize="14" Opacity="0.55"/>
+                            <TextBlock x:Name="sTempText" Text="" TextWrapping="Wrap" Style="{StaticResource BodyTextBlockStyle}" FontSize="14" Opacity="0.55" Margin="5,0,0,0"/>
+                        </StackPanel>
                         <Slider x:Name="startingTempSlider" ValueChanged="startingTempSlider_ValueChanged" Margin="0,5,0,0"/>
                     </StackPanel>
                     <StackPanel x:Name="tempReductionPanel" Orientation="Vertical" Margin="0,30,0,0">
-                        <TextBlock Text="Temperature Reduction Rate" TextWrapping="Wrap" Style="{StaticResource BodyTextBlockStyle}" FontSize="14" Opacity="0.55"/>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Reduction Rate" TextWrapping="Wrap" Style="{StaticResource BodyTextBlockStyle}" FontSize="14" Opacity="0.55"/>
+                            <TextBlock x:Name="tempRateText" Text="" TextWrapping="Wrap" Style="{StaticResource BodyTextBlockStyle}" FontSize="14" Opacity="0.55" Margin="5,0,0,0"/>
+                        </StackPanel>
                         <Slider x:Name="tempRateSlider" ValueChanged="tempRateSlider_ValueChanged" Margin="0,5,0,0"/>
                     </StackPanel>
                 </StackPanel>
