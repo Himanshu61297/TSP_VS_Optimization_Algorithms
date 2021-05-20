@@ -1,0 +1,110 @@
+﻿<Page
+    x:Class="optimization_algos.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:optimization_algos"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:win2d="using:Microsoft.Graphics.Canvas.UI.Xaml"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Grid.Background>
+            <AcrylicBrush BackgroundSource="HostBackdrop" TintOpacity="0" FallbackColor="#FF0E0E0E"/>
+        </Grid.Background>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="320"/>
+        </Grid.ColumnDefinitions>
+        <ScrollViewer VerticalScrollBarVisibility="Hidden" VerticalScrollMode="Enabled" Grid.Column="1">
+            <ScrollViewer.Background>
+                <AcrylicBrush BackgroundSource="HostBackdrop" TintOpacity="0.1" FallbackColor="#FF191919"/>
+            </ScrollViewer.Background>
+
+            <StackPanel Padding="20,0,20,0">
+                <StackPanel Margin="0,40,0,0">
+                    <TextBlock Text="Visualizer" Style="{ThemeResource SubtitleTextBlockStyle}" TextWrapping="Wrap" Foreground="#BFFFFFFF" FontSize="14"/>
+                    <TextBlock Text="Travelling Salesman Problem" Style="{ThemeResource TitleTextBlockStyle}" TextWrapping="Wrap" Foreground="#E5FFFFFF" FontSize="20" Margin="0,5,0,0"/>
+                </StackPanel>
+                <Path Data="M25.325822,31.205008 L372.74366,31.205008" StrokeThickness="2" Fill="#FFF4F4F5" Height="2" Stretch="Fill" Stroke="#3FFFFFFF" UseLayoutRounding="False" Margin="0,40,0,40"/>
+                <StackPanel x:Name="methods">
+                    <TextBlock Text="Methods" TextWrapping="Wrap" Style="{StaticResource BodyTextBlockStyle}" Foreground="#E5FFFFFF"/>
+                    <Button x:Name="lexBtn" Tag="0" Click="Button_Click" Style="{StaticResource TextBlockButtonStyle}" Foreground="White" FontStretch="UltraCondensed" Opacity="0.55" Margin="0,30,0,0" Padding="0,4,0,5">
+                        <TextBlock Text="Lexicographic Order" Style="{StaticResource BodyTextBlockStyle}" FontSize="14"/>
+                    </Button>
+                    <Button x:Name="twoOptBtn" Tag="1" Click="Button_Click" Style="{StaticResource TextBlockButtonStyle}" Foreground="White" FontStretch="UltraCondensed" Opacity="0.55" Margin="0,30,0,0" Padding="0,4,0,5">
+                        <TextBlock Text="2-Opt" Style="{StaticResource BodyTextBlockStyle}" FontSize="14"/>
+                    </Button>
+                    <Button x:Name="saBtn" Tag="2" Click="Button_Click" Style="{StaticResource TextBlockButtonStyle}" Foreground="White" FontStretch="UltraCondensed" Opacity="0.55" Margin="0,30,0,0" Padding="0,4,0,5">
+                        <TextBlock Text="Simulated Annealing" Style="{StaticResource BodyTextBlockStyle}" FontSize="14"/>
+                    </Button>
+                    <Button x:Name="gaBtn" Tag="3" Click="Button_Click" Style="{StaticResource TextBlockButtonStyle}" Foreground="White" FontStretch="UltraCondensed" Opacity="0.55" Margin="0,30,0,0" Padding="0,4,0,5">
+                        <TextBlock Text="Genetic Algorithm" Style="{StaticResource BodyTextBlockStyle}" FontSize="14"/>
+                    </Button>
+                </StackPanel>
+                <Path Data="M25.325822,31.205008 L372.74366,31.205008" StrokeThickness="2" Fill="#FFF4F4F5" Height="2" Stretch="Fill" Stroke="#3FFFFFFF" UseLayoutRounding="False" Margin="0,40,0,40"/>
+                <StackPanel>
+                    <TextBlock Text="Properties" TextWrapping="Wrap" Style="{StaticResource BodyTextBlockStyle}" Foreground="#E5FFFFFF"/>
+                    <StackPanel x:Name="noOfCitiesPanel" Orientation="Vertical" Margin="0,30,0,0">
+                        <TextBlock Text="No of Cities" TextWrapping="Wrap" Style="{StaticResource BodyTextBlockStyle}" FontSize="14" Opacity="0.55"/>
+                        <Slider x:Name="CitySlider" ValueChanged="CitySlider_ValueChanged" Margin="0,5,0,0"/>
+                    </StackPanel>
+                    <StackPanel x:Name="populationSizePanel" Orientation="Vertical" Margin="0,30,0,0">
+                        <TextBlock Text="Population Size" TextWrapping="Wrap" Style="{StaticResource BodyTextBlockStyle}" FontSize="14" Opacity="0.55"/>
+                        <Slider x:Name="populationSlider" ValueChanged="populationSlider_ValueChanged" Margin="0,5,0,0"/>
+                    </StackPanel>
+                    <StackPanel x:Name="mutationRatePanel" Orientation="Vertical" Margin="0,30,0,0">
+                        <TextBlock Text="Mutation Rate" TextWrapping="Wrap" Style="{StaticResource BodyTextBlockStyle}" FontSize="14" Opacity="0.55"/>
+                        <Slider x:Name="mutationSlider" ValueChanged="mutationSlider_ValueChanged" Margin="0,5,0,0"/>
+                    </StackPanel>
+                    <StackPanel x:Name="elitismPanel" Orientation="Vertical" Margin="0,30,0,0">
+                        <TextBlock Text="Elitism" TextWrapping="Wrap" Style="{StaticResource BodyTextBlockStyle}" FontSize="14" Opacity="0.55"/>
+                        <Slider x:Name="elitismSlider" ValueChanged="elitismSlider_ValueChanged" Margin="0,5,0,0"/>
+                    </StackPanel>
+                    <StackPanel x:Name="tempPanel" Orientation="Vertical" Margin="0,30,0,0">
+                        <TextBlock Text="Starting Temperature" TextWrapping="Wrap" Style="{StaticResource BodyTextBlockStyle}" FontSize="14" Opacity="0.55"/>
+                        <Slider x:Name="startingTempSlider" ValueChanged="startingTempSlider_ValueChanged" Margin="0,5,0,0"/>
+                    </StackPanel>
+                    <StackPanel x:Name="tempReductionPanel" Orientation="Vertical" Margin="0,30,0,0">
+                        <TextBlock Text="Temperature Reduction Rate" TextWrapping="Wrap" Style="{StaticResource BodyTextBlockStyle}" FontSize="14" Opacity="0.55"/>
+                        <Slider x:Name="tempRateSlider" ValueChanged="tempRateSlider_ValueChanged" Margin="0,5,0,0"/>
+                    </StackPanel>
+                </StackPanel>
+                <Path Data="M25.325822,31.205008 L372.74366,31.205008" StrokeThickness="2" Fill="#FFF4F4F5" Height="2" Stretch="Fill" Stroke="#3FFFFFFF" UseLayoutRounding="False" Margin="0,40,0,40"/>
+            </StackPanel>
+        </ScrollViewer>
+        <StackPanel x:Name="InfoPanel" HorizontalAlignment="Right" Grid.Column="1" VerticalAlignment="Top" Margin="0,40,20,0" Visibility="Collapsed">
+            <StackPanel x:Name="swapInfoPanel" Orientation="Horizontal" HorizontalAlignment="Right">
+                <TextBlock Text="2-Opt Swaps." Style="{StaticResource TitleTextBlockStyle}" TextWrapping="Wrap" VerticalAlignment="Bottom" Margin="0,0,0,8" FontSize="14"/>
+                <TextBlock Text="1526" Style="{StaticResource ResourceKey=HeaderTextBlockStyle}" TextWrapping="Wrap" VerticalAlignment="Bottom"/>
+            </StackPanel>
+            <StackPanel x:Name="tempInfoPanel" Orientation="Horizontal" HorizontalAlignment="Right">
+                <TextBlock Text="Current Temperature." Style="{StaticResource TitleTextBlockStyle}" TextWrapping="Wrap" VerticalAlignment="Bottom" Margin="0,0,0,8" FontSize="14"/>
+                <TextBlock Text="1526" Style="{StaticResource ResourceKey=HeaderTextBlockStyle}" TextWrapping="Wrap" VerticalAlignment="Bottom"/>
+            </StackPanel>
+            <StackPanel x:Name="iterationInfoPanel" Orientation="Horizontal" HorizontalAlignment="Right">
+                <TextBlock Text="Current Iteration." Style="{StaticResource TitleTextBlockStyle}" TextWrapping="Wrap" VerticalAlignment="Bottom" Margin="0,0,0,8" FontSize="14"/>
+                <TextBlock Text="1526" Style="{StaticResource ResourceKey=HeaderTextBlockStyle}" TextWrapping="Wrap" VerticalAlignment="Bottom"/>
+            </StackPanel>
+            <StackPanel x:Name="genInfoPanel" Orientation="Horizontal" HorizontalAlignment="Right">
+                <TextBlock Text="Generation." Style="{StaticResource TitleTextBlockStyle}" TextWrapping="Wrap" VerticalAlignment="Bottom" Margin="0,0,0,8" FontSize="14"/>
+                <TextBlock Text="1526" Style="{StaticResource ResourceKey=HeaderTextBlockStyle}" TextWrapping="Wrap" VerticalAlignment="Bottom"/>
+            </StackPanel>
+            <StackPanel x:Name="totalIterationInfoPanel" Orientation="Horizontal" Margin="0,5,0,0" HorizontalAlignment="Right">
+                <TextBlock Text="Total Iterations." Style="{StaticResource TitleTextBlockStyle}" TextWrapping="Wrap" VerticalAlignment="Bottom" FontSize="14" Margin="0,0,5,0"/>
+                <TextBlock Text="1001052.005523" Style="{StaticResource ResourceKey=TitleTextBlockStyle}" TextWrapping="Wrap" VerticalAlignment="Bottom" FontSize="14" Margin="0,0,5,0"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,0,0">
+                <TextBlock Text="Initial Distance." Style="{StaticResource TitleTextBlockStyle}" TextWrapping="Wrap" VerticalAlignment="Bottom" FontSize="14" Margin="0,0,5,0"/>
+                <TextBlock Text="1001052.005523" Style="{StaticResource ResourceKey=TitleTextBlockStyle}" TextWrapping="Wrap" VerticalAlignment="Bottom" FontSize="14" Margin="0,0,5,0"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,0,0">
+                <TextBlock Text="Current Distance." Style="{StaticResource TitleTextBlockStyle}" TextWrapping="Wrap" VerticalAlignment="Bottom" FontSize="14" Margin="0,0,5,0"/>
+                <TextBlock Text="9052.4856" Style="{StaticResource ResourceKey=TitleTextBlockStyle}" TextWrapping="Wrap" VerticalAlignment="Bottom" FontSize="14" Margin="0,0,5,0"/>
+            </StackPanel>
+        </StackPanel>
+        <Frame x:Name="frame"/>
+
+    </Grid>
+</Page>
