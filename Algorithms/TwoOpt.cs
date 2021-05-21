@@ -30,8 +30,7 @@ namespace optimization_algos
             for (int i = 0; i < order.Length - 1; i++)
             {
                 for (int j = i + 1; j < order.Length; j++)
-                {
-                    count++;
+                {                   
                     var newRout = two_opt_swap(order, i, j);
                     var newdis = SharedMethods.RoundTripDistance(SharedMethods.Locations, newRout);
                     if (bestdistance > newdis)
@@ -39,6 +38,7 @@ namespace optimization_algos
                         bestdistance = newdis;
                         order = newRout;
                         flag = 1;
+                        count++;
                         break;
                     }
                 }

@@ -40,7 +40,36 @@ namespace optimization_algos
             }
             else
             {
-                newX = two_opt_swap(newX, j, i);
+                //abcd 
+                while (i != j)
+                {
+                    var temp = newX[i];
+                    newX[i] = newX[j];
+                    newX[j] = temp;
+
+                    if (i == newX.Length - 1)
+                    {
+                        i = 0;
+                    }
+                    else
+                        i++;
+
+                    if (i == j)
+                    {
+                        break;
+                    }
+
+
+                    if (j == 0)
+                        j = newX.Length - 1;
+                    else
+                        j--;
+
+                    if (i == j)
+                    {
+                        break;
+                    }
+                }
             }
 
             return newX;

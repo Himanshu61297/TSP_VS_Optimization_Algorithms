@@ -183,16 +183,48 @@ namespace optimization_algos
 
         public void Mutation()
         {
-            var i = random.Next(1, Genes.Length - 1);
-            var j = random.Next(1, Genes.Length - 1);
+            var i = random.Next(Genes.Length);
+            var j = random.Next(Genes.Length);
 
             while (i == j)
-                j = random.Next(1, Genes.Length - 1);
+                j = random.Next(Genes.Length);
 
             if (i < j)
                 Genes = two_opt_swap(Genes, i, j);
             else
-                Genes = two_opt_swap(Genes, j, i);
+            {
+                //abcd 
+                while(i!=j)
+                {
+                    var temp = Genes[i];
+                    Genes[i] = Genes[j];
+                    Genes[j] = temp;                   
+
+                    if (i == Genes.Length - 1)
+                    {
+                        i = 0;
+                    }                      
+                    else 
+                        i++;
+
+                    if(i==j)
+                    {
+                        break;
+                    }
+
+
+                    if (j == 0)
+                        j = Genes.Length - 1;
+                    else
+                        j--;
+
+                    if (i == j)
+                    {
+                        break;
+                    }
+                }               
+            }
+                //Genes = two_opt_swap(Genes, j, i);
         }
 
         int[] two_opt_swap(int[] order, int i, int j)
